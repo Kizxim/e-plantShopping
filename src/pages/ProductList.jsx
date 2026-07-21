@@ -65,7 +65,7 @@ function ProductList() {
                   onClick={() => handleAddToCart(plant)}
                   disabled={addedItems[plant.id]}
                 >
-                  {addedItems[plant.id] ? '✓ Added' : 'Add to Cart'}
+                  {addedItems[plant.id] ? 'Added to Cart' : 'Add to Cart'}
                 </button>
               </div>
             ))}
