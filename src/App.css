@@ -167,4 +167,10 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-
   .cart-item { flex-wrap: wrap; }
   .landing-title { font-size: 2.5rem; }
   .product-page, .cart-page { padding: 1rem; }
+  /* Thêm vào cuối file App.css */
+  .background-image {
+    background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
 }
