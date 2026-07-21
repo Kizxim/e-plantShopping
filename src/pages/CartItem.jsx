@@ -1,11 +1,21 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { updateQuantity, removeItem, clearCart } from '../features/cart/CartSlice';
+import { updateQuantity, removeItem } from '../features/cart/CartSlice';
 
 function CartItem() {
   const dispatch = useDispatch();
   const { items, totalQuantity, totalPrice } = useSelector((state) => state.cart);
+
+  // Hàm tính tổng tiền cho mỗi item
+  const getItemTotal = (item) => {
+    return (item.price * item.quantity).toFixed(2);
+  };
+
+  // Hàm tính tổng tiền toàn bộ giỏ hàng
+  const getCartTotal = () => {
+    return items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  };
 
   const handleIncrease = (id) => {
     const item = items.find((item) => item.id === id);
@@ -56,9 +66,9 @@ function CartItem() {
           <img src={item.image} alt={item.name} className="cart-item-image" />
           <div className="cart-item-info">
             <div className="cart-item-name">{item.name}</div>
-            <div className="cart-item-price">${item.price.toFixed(2)}</div>
-            <div style={{ fontSize: '0.9rem', color: '#666' }}>
-              Total: ${(item.price * item.quantity).toFixed(2)}
+            <div className="cart-item-price">Unit: ${item.price.toFixed(2)}</div>
+            <div style={{ fontSize: '0.9rem', color: '#2e7d32', fontWeight: 'bold' }}>
+              Subtotal: ${getItemTotal(item)}
             </div>
           </div>
           <div className="cart-item-actions">
@@ -77,7 +87,7 @@ function CartItem() {
           Total Items: <strong>{totalQuantity}</strong>
         </div>
         <div className="cart-total">
-          Total: ${totalPrice.toFixed(2)}
+          Total Amount: ${getCartTotal()}
         </div>
 
         <div className="cart-actions">
