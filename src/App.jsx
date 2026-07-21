@@ -39,7 +39,12 @@ function LandingPage() {
       <h1 className="landing-title">🌿 Paradise Nursery</h1>
       <p className="landing-subtitle">Bring nature home — one plant at a time.</p>
       <Link to="/plants">
-        <button className="btn-get-started">Get Started</button>
+        <button 
+          className="btn-get-started" 
+          onClick={() => window.location.href = '/plants'}
+        >
+          Get Started
+        </button>
       </Link>
     </div>
   );
